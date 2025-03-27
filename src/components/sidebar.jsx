@@ -3,9 +3,11 @@ import { CarritoContext } from "../context/contextcarrito";
 import { useContext } from "react";
 
 export default function Sidebar() {
+
+  const { carrito } = useContext(CarritoContext);
+
   return (
-    <div className="d-flex">
-      {/* Sidebar fija */}
+    
       <div
         className="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark position-fixed top-0 start-0 vh-100"
         style={{ width: "280px" }}
@@ -28,12 +30,15 @@ export default function Sidebar() {
           </li>
           <li>
             <Link to="/orders" className="nav-link text-white">
-              Orders
+              Carrito 
+              <strong className="m-2 text-primary">
+                {carrito.length}
+              </strong> 
             </Link>
           </li>
           <li>
-            <Link to="/products" className="nav-link text-white">
-              Products
+            <Link to="/table" className="nav-link text-white">
+              Tabla
             </Link>
           </li>
           <li>
@@ -59,12 +64,6 @@ export default function Sidebar() {
           </ul>
         </div>
       </div>
-
-      {/* Contenido principal con margen a la derecha de la sidebar */}
-      <main className="flex-grow-1 ms-5" style={{ marginLeft: "280px", padding: "20px" }}>
-        <h1>Contenido Principal</h1>
-        <p>Aquí va el contenido de la página...</p>
-      </main>
-    </div>
+   
   );
 }
